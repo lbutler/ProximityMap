@@ -57,6 +57,7 @@ body { background-color: #ececec}
 	height: 0;
 	padding-bottom: 100%;
 	border-radius: 50%;
+	position: relative;
 }
 .zone:after {
 	width: 75%;
@@ -73,10 +74,12 @@ body { background-color: #ececec}
 /* Zones centre icon and animation */
 .zone .centre {
 	display: block;
-	overflow: hidden;
 	position: absolute;
 	top: 50%;
 	left: 50%;
+	
+}
+.marker-offset {
 	margin: -14px 0 0 -8px;
 }
 .pulse {
@@ -94,6 +97,55 @@ body { background-color: #ececec}
 
  100% {
     color: rgba(165, 25, 25, 0.6);
+ }
+
+}
+
+
+/* Floating heads */
+
+.floating-head img {
+	height: 50px;
+	width: 50px;
+	border-radius: 50%;
+	box-shadow: 2px 3px 11px 1px rgba(0,0,0,0.2)
+}
+
+
+/* Floating heads in zones */
+.zone .floating-head {
+	margin: -25px 0 0 -25px;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	padding-left: 30%;
+	padding-top: 40%;
+}
+
+.move-animation {
+    transition: 400ms ease-out;
+}
+
+.hover-head {
+	-webkit-animation: hover-head 3s linear infinite;
+}
+
+@-webkit-keyframes "hover-head" {
+ 0% {
+    margin-left: 0px;
+ }
+
+ 25% {
+    margin-left: -3px;
+ }
+
+ 75% {
+    margin-left: 3px;
+ }
+
+ 100% {
+    margin-left: 0px;
  }
 
 }
