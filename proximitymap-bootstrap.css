@@ -50,6 +50,11 @@ h2 { font-size: 19px;}
 p { font-family: 'Roboto', sans-serif; font-weight: 300; font-size: 13px; }
 body { background-color: #ececec}
 
+/* Waiting Zone */
+.waiting-zone {
+	padding-bottom: 20px;
+}
+
 /* Zones */
 .zone {
 	border: dashed 1px;
@@ -127,7 +132,7 @@ body { background-color: #ececec}
     transition: 400ms ease-out;
 }
 
-.hover-head {
+.zone .hover-head {
 	-webkit-animation: hover-head 3s linear infinite;
 }
 
