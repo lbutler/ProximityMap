@@ -11,7 +11,7 @@ PROXIMITY.Zone = (function() {
 
 	};
 
-	App.prototype.updateDom = function() {
+	Zone.prototype.updateDom = function() {
 		//for each child object that is a beacon update its position on the radius map
 	};
 

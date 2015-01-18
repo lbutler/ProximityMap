@@ -11,12 +11,14 @@ PROXIMITY.Beacon = (function() {
 		this.currentZone = null;
 		this.dom = null;
 		this.accuracy = 0;
+		this.lastMessage = null;
 	};
 
 	Beacon.prototype.setCurrentZone = function(zone) {
 		if(this.currentZone === null)
 			this.createDomItem(zone);
 		this.currentZone = zone;
+		//Add zone into that dom
 	};
 
 	Beacon.prototype.createDomItem = function(zone) {

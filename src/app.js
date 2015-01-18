@@ -23,9 +23,14 @@ PROXIMITY.App = (function() {
 	App.prototype.moveBeacon = function(beaconId, zoneId) {
 		var beacon = this.beacons[beaconId];
 		var oldZone = beacon.currentZone;
-		beacon.currentZone =  this.zones[zoneId];
+		beacon.setCurrentZone(this.zones[zoneId]);
 		oldZone.updateDom();
 		beacon.currentZone.updateDom();
+	};
+
+	App.prototype.findStaleSignals = function() {
+		//go through each of the beacons and see when we last got a message
+		//if it has been past X minutes move to waiting zone
 	};
 
 
