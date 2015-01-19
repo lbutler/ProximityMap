@@ -60,7 +60,7 @@ PROXIMITY.App = (function() {
 	App.prototype._findStaleSignals = function() {
 		for ( var uuid in this.beacons) {
 			var beacon = this.beacons[uuid];
-			if( beacon.lastMessage !== null && Date.now() - beacon.lastMessage > 10000 ) {
+			if( beacon.lastMessage !== null && Date.now() - beacon.lastMessage > 20000 ) {
 				this.story.updateStory(beacon, beacon.currentZone, "left");
 				beacon.setCurrentZone(this.waitingZone, 0);
 				beacon.lastMessage = null;

@@ -45,13 +45,28 @@
 	});
 
 
-	//TODO: use updateWithNewData to broadcast new data, this is where we will hook in the live stream
-	proximityApp.updateWithNewData( 1, 10, "Z1");
-	setTimeout( function(){
-		proximityApp.updateWithNewData( 2, 10, "Z2");
-	}, 12000);
+	// Creating fake published data here
+	var randomIntFromInterval =function(min,max) {
+		return Math.floor(Math.random()*(max-min+1)+min);
+	};
+
+	window.setInterval( function(){
+		var beaconUUID = randomIntFromInterval(1,18);
+		var accuracy = randomIntFromInterval(10,90);
+		var currentZone = proximityApp.beacons[beaconUUID].currentZone.uuid;
+
+		if( Math.random() < 0.9 && currentZone !== "0") {
+
+			proximityApp.updateWithNewData( beaconUUID, accuracy, currentZone);
+		} else {
+			if ( Math.random() > 0.95 ) {
+				var zone = "Z" + randomIntFromInterval(1,5);
+				proximityApp.updateWithNewData( beaconUUID, accuracy, zone);
+			}
+		}
+
+	} , 300);
 
 
-	console.log(proximityApp);
 
 })();
