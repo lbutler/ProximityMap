@@ -20,7 +20,18 @@
 		proximityApp.addBeacon( new PROXIMITY.Beacon(beacon.uuid, beacon.name, beacon.imgUrl) );
 	});
 
-	proximityApp.addZone( new PROXIMITY.RadiusZone("Z1", "Zone 1", document.getElementById('z1') ) );
+
+	var knownZones =
+	[{"uuid": "Z1", "name": "Zone 1", "domId": "z1" },
+	{"uuid": "Z2", "name": "Zone 2", "domId": "z2" },
+	{"uuid": "Z3", "name": "Zone 3", "domId": "z3" },
+	{"uuid": "Z4", "name": "Zone 4", "domId": "z4" },
+	{"uuid": "Z5", "name": "Zone 5", "domId": "z5" }];
+
+	knownZones.forEach( function(zone) {
+		proximityApp.addZone( new PROXIMITY.RadiusZone(zone.uuid, zone.name, document.getElementById(zone.domId)) );
+	});
+
 
 	//TODO: use updateWithNewData to broadcast new data, this is where we will hook in the live stream
 	//proximityApp._moveBeacon( 1, "Z1");
