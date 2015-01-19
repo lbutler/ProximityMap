@@ -14,7 +14,7 @@ PROXIMITY.Beacon = (function() {
 		this.lastMessage = null;
 	};
 
-	Beacon.prototype.setCurrentZone = function(zone) {
+	Beacon.prototype.setCurrentZone = function(zone , accuracy) {
 		
 		if(this.currentZone === null){
 			this.createDomItem(zone);
@@ -23,11 +23,22 @@ PROXIMITY.Beacon = (function() {
 			this.currentZone = zone;
 		}
 
+		this.accuracy = accuracy;
+		this._updateLastMessageTime();
+	};
+
+	Beacon.prototype.setAccuracy = function(accuracy) {
+		this.accuracy = accuracy;
+		this._updateLastMessageTime();
 	};
 
 	Beacon.prototype.createDomItem = function(zone) {
 		this.dom = $("<a href='#' data-name='"+this.name+"' class='floating-head hover-head centre'><img src='"+this.imgUrl+"'></a>").appendTo(zone.dom)[0];
 		this.currentZone = zone;
+	};
+
+	Beacon.prototype._updateLastMessageTime = function() {
+		this.lastMessage = Date.now();
 	};
 
 

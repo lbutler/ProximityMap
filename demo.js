@@ -37,7 +37,9 @@
 	proximityApp.updateWithNewData( 1, 10, "Z1");
 	setTimeout( function(){
 		proximityApp.updateWithNewData( 2, 10, "Z2");
-	}, 3000);
+	}, 12000);
+
+
 	console.log(proximityApp);
 
 })();

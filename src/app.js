@@ -6,11 +6,12 @@ PROXIMITY.App = (function() {
 	var App = function App() {
 
 		this.beacons = {};
-
 		this.waitingZone = null;
 		this.zones = {};
 
-		//TODO: Run _findStaleSignals on timeout, if > set time then return to waiting zone
+		var self = this;
+		this._StaleSignalsIntervalId = window.setInterval( function(){ self._findStaleSignals.apply(self); } , 1000);
+
 	};
 
 	App.prototype.addBeacon = function(beacon) {
@@ -31,17 +32,17 @@ PROXIMITY.App = (function() {
 				this._updateBeaconAccuracy(beaconId, accuracy);
 
 			} else {
-				this._moveBeacon(beaconId, zoneId);
-				
+				this._moveBeacon(beaconId, accuracy, zoneId);
+
 			}
 		}
 	};
 
 
-	App.prototype._moveBeacon = function(beaconId, zoneId) {
+	App.prototype._moveBeacon = function(beaconId, accuracy, zoneId) {
 		var beacon = this.beacons[beaconId];
 		var oldZone = beacon.currentZone;
-		beacon.setCurrentZone(this.zones[zoneId]);
+		beacon.setCurrentZone(this.zones[zoneId], accuracy);
 
 		oldZone.updateDomForAllBeacons();
 		beacon.currentZone.updateDomForAllBeacons();
@@ -49,14 +50,17 @@ PROXIMITY.App = (function() {
 
 	App.prototype._updateBeaconAccuracy = function(beaconId, accuracy) {
 		var beacon = this.beacons[beaconId];
-		beacon.accuracy = accuracy;
+		beacon.setAccuracy(accuracy);
 		beacon.currentZone.updateDomForSingleBeacon(beacon);
 	};
 
 	App.prototype._findStaleSignals = function() {
-		//TODO: This method as below
-		//go through each of the beacons and see when we last got a message
-		//if it has been past X minutes move to waiting zone
+		for ( var uuid in this.beacons) {
+			var beacon = this.beacons[uuid];
+			if( Date.now() - beacon.lastMessage > 10000 ) {
+				beacon.setCurrentZone(this.waitingZone, 0);
+			}
+		}
 	};
 
 	return App;
