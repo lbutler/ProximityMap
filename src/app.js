@@ -24,9 +24,17 @@ PROXIMITY.App = (function() {
 
 	App.prototype.updateWithNewData = function(beaconId, accuracy, zoneId) {
 		//TODO: This method as below
-		//Check if beacon is known, if not known ignore
-		//If beacon current zone is same as zoneid then run _updateBeaconAccuracy
-		//If beacon in new zone then run _moveBeacon
+		var beacon = this.beacons[beaconId];
+		if (beacon !== "undefined") { //? cant remember
+
+			if (beacon.currentZone.uuid === zoneId) {
+				this._updateBeaconAccuracy(beaconId, accuracy);
+
+			} else {
+				this._moveBeacon(beaconId, zoneId);
+				
+			}
+		}
 	};
 
 
