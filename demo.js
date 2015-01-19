@@ -4,7 +4,8 @@
 
 	proximityApp.waitingZone = document.getElementById('waiting-zone');
 
-	var sampleData = [{
+	//Webservice returns known beacons and zones
+	var knownBeacons = [{
 		"uuid": 1,
 		"name": "Peter",
 		"imgUrl": "http://imgsrc.hubblesite.org/hu/db/images/hs-1994-02-c-thumb.jpg"
@@ -14,11 +15,15 @@
 		"imgUrl": "http://imgsrc.hubblesite.org/hu/db/images/hs-1994-02-c-thumb.jpg"
 	}];
 
-	sampleData.forEach( function(item) {
-
-		proximityApp.addBeacon( new PROXIMITY.Beacon(item.uuid, item.name, item.imgUrl) );
-
+	knownBeacons.forEach( function(beacon) {
+		proximityApp.addBeacon( new PROXIMITY.Beacon(beacon.uuid, beacon.name, beacon.imgUrl) );
 	});
+
+	proximityApp.addZone( new PROXIMITY.Zone("Z1", "Zone 1", $("#z1")[0] ) );
+
+
+	//TODO: use updateWithNewData to broadcast new data, this is where we will hook in the live stream
+	//proximityApp.moveBeacon( 1, "Z1");
 
 	console.log(proximityApp);
 

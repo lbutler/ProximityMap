@@ -15,14 +15,19 @@ PROXIMITY.Beacon = (function() {
 	};
 
 	Beacon.prototype.setCurrentZone = function(zone) {
-		if(this.currentZone === null)
+		
+		if(this.currentZone === null){
 			this.createDomItem(zone);
-		this.currentZone = zone;
-		//Add zone into that dom
+		} else {
+			$(this.dom).detach().appendTo(zone.dom);
+			this.currentZone = zone;
+		}
+
 	};
 
 	Beacon.prototype.createDomItem = function(zone) {
 		this.dom = $("<a href='#' data-name='"+this.name+"' class='floating-head hover-head centre'><img src='"+this.imgUrl+"'></a>").appendTo(zone)[0];
+		this.currentZone = zone;
 	};
 
 
