@@ -7,6 +7,7 @@ PROXIMITY.App = (function() {
 
 		this.beacons = {};
 		this.waitingZone = null;
+		this.story = null;
 		this.zones = {};
 
 		var self = this;
