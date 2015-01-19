@@ -20,7 +20,7 @@
 		proximityApp.addBeacon( new PROXIMITY.Beacon(beacon.uuid, beacon.name, beacon.imgUrl) );
 	});
 
-	proximityApp.addZone( new PROXIMITY.RadiusZone("Z1", "Zone 1", $("#z1")[0] ) );
+	proximityApp.addZone( new PROXIMITY.RadiusZone("Z1", "Zone 1", document.getElementById('z1') ) );
 
 	//TODO: use updateWithNewData to broadcast new data, this is where we will hook in the live stream
 	//proximityApp._moveBeacon( 1, "Z1");
