@@ -59,6 +59,7 @@ PROXIMITY.App = (function() {
 			var beacon = this.beacons[uuid];
 			if( Date.now() - beacon.lastMessage > 10000 ) {
 				beacon.setCurrentZone(this.waitingZone, 0);
+				beacon.lastMessage = null;
 			}
 		}
 	};
