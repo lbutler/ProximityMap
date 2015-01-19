@@ -17,7 +17,7 @@ PROXIMITY.Beacon = (function() {
 	Beacon.prototype.setCurrentZone = function(zone) {
 		
 		if(this.currentZone === null){
-			this.createDomItem(zone);
+			this.createDomItem(zone.dom);
 		} else {
 			$(this.dom).detach().appendTo(zone.dom);
 			this.currentZone = zone;
