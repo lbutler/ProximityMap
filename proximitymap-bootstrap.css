@@ -53,6 +53,7 @@ body { background-color: #ececec}
 /* Waiting Zone */
 .waiting-zone {
 	padding-bottom: 20px;
+	height: 90px; 
 }
 
 /* Zones */

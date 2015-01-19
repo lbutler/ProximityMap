@@ -34,8 +34,10 @@
 
 
 	//TODO: use updateWithNewData to broadcast new data, this is where we will hook in the live stream
-	//proximityApp._moveBeacon( 1, "Z1");
-
+	proximityApp.updateWithNewData( 1, 10, "Z1");
+	setTimeout( function(){
+		proximityApp.updateWithNewData( 2, 10, "Z2");
+	}, 3000);
 	console.log(proximityApp);
 
 })();
