@@ -16,6 +16,15 @@ PROXIMITY.RadiusZone = (function() {
 	RadiusZone.prototype.updateDomForAllBeacons = function() {
 		//TODO: This method as below
 		//for each child object that is a beacon update its position on the radius map
+		var listOfBeacons = $(this.dom).children('.floating-head');
+		var amount = listOfBeacons.length;
+		var degree = 360 / amount;
+
+		listOfBeacons.each(function(index) {
+			var x = 20 * Math.cos(degree * index / (180/Math.PI));
+			var y = 20 * Math.sin(degree * index / (180/Math.PI));
+			$( this ).css( "padding-left", (50 + x) + "%" ).css( "padding-top", (50 - y) + "%" );
+		});
 	};
 
 	RadiusZone.prototype.updateDomForSingleBeacon = function(beacon) {
