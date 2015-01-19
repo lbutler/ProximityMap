@@ -47,7 +47,7 @@ body {
 /* Generic changes to make it fit material design-lite */
 h1, h2, h3, h4, h5 { font-family: 'Roboto', sans-serif; font-weight: 400; }
 h2 { font-size: 19px;}
-p { font-family: 'Roboto', sans-serif; font-weight: 300; font-size: 13px; }
+p, li, ul { font-family: 'Roboto', sans-serif; font-weight: 300; font-size: 13px; }
 body { background-color: #ececec}
 
 /* Waiting Zone */

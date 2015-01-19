@@ -3,6 +3,7 @@
 	var proximityApp =  new PROXIMITY.App();
 
 	proximityApp.waitingZone = new PROXIMITY.Zone("0", "Waiting Zone", document.getElementById('waiting-zone') );
+	proximityApp.story = new PROXIMITY.Story( document.getElementById('story') );
 
 	//Webservice returns known beacons and zones
 	// Images from HubbleSite http://hubblesite.org

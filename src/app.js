@@ -17,6 +17,7 @@ PROXIMITY.App = (function() {
 
 	App.prototype.addBeacon = function(beacon) {
 		beacon.setCurrentZone(this.waitingZone);
+		beacon.lastMessage = null;
 		this.beacons[beacon.uuid] = beacon;
 	};
 
@@ -34,6 +35,7 @@ PROXIMITY.App = (function() {
 
 			} else {
 				this._moveBeacon(beaconId, accuracy, zoneId);
+				this.story.updateStory(beacon, this.zones[zoneId], "entered");
 
 			}
 		}
@@ -58,7 +60,8 @@ PROXIMITY.App = (function() {
 	App.prototype._findStaleSignals = function() {
 		for ( var uuid in this.beacons) {
 			var beacon = this.beacons[uuid];
-			if( Date.now() - beacon.lastMessage > 10000 ) {
+			if( beacon.lastMessage !== null && Date.now() - beacon.lastMessage > 10000 ) {
+				this.story.updateStory(beacon, beacon.currentZone, "left");
 				beacon.setCurrentZone(this.waitingZone, 0);
 				beacon.lastMessage = null;
 			}

@@ -10,8 +10,9 @@ PROXIMITY.Story = (function() {
 	};
 
 	Story.prototype.updateStory = function(beacon, zone, action) {
-		//TODO: This method as below
-		//
+
+		$( this.dom ).prepend( "<li><b>" + beacon.name + "</b> has " + action + " <b>" + zone.name + "</b> <span data-livestamp='" + Date.now()/1000 + "'></span>.</li>");
+
 	};
 
 
