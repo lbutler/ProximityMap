@@ -33,7 +33,7 @@ PROXIMITY.Beacon = (function() {
 	};
 
 	Beacon.prototype.createDomItem = function(zone) {
-		this.dom = $("<a href='#' data-name='"+this.name+"' class='floating-head hover-head centre'><img src='"+this.imgUrl+"'></a>").appendTo(zone.dom)[0];
+		this.dom = $("<a href='#' data-name='"+this.name+"' class='floating-head hover-head centre'><img src='"+this.imgUrl+"'  data-toggle='tooltip' data-placement='top' title='Tooltip example'></a>").appendTo(zone.dom)[0];
 		this.currentZone = zone;
 	};
 

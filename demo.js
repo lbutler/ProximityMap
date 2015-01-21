@@ -69,4 +69,8 @@
 
 
 
+	//Turn on tooltips
+	$('[data-toggle="tooltip"]').tooltip();
+
+
 })();
