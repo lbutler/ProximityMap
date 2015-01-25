@@ -126,9 +126,8 @@ body { background-color: #ececec}
 
 /* Floating heads in zones */
 .zone .floating-head {
-	margin: -25px 0 0 -25px;
-	left: 0;
-	top: 0;
+	left: -25px;
+	top: -25px;
 	width: 100%;
 	height: 100%;
 	padding-left: 30%;
