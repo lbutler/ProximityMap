@@ -19,7 +19,6 @@ PROXIMITY.RadiusZone = (function() {
 		var listOfBeacons = $(this.dom).children('.floating-head');
 		var amount = listOfBeacons.length;
 		var degree = 360 / amount;
-		var distanceFromCentre = 20;
 		var self = this;
 
 		listOfBeacons.each(function(index) {
