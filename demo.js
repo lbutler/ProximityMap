@@ -52,7 +52,7 @@
 
 	window.setInterval( function(){
 		var beaconUUID = randomIntFromInterval(1,18);
-		var accuracy = randomIntFromInterval(10,90);
+		var accuracy = randomIntFromInterval(0,70);
 		var currentZone = proximityApp.beacons[beaconUUID].currentZone.uuid;
 
 		if( Math.random() < 0.9 && currentZone !== "0") {
